@@ -172,10 +172,10 @@ public class ArsProviders {
         }
 
         public void addRitualPage(AbstractRitual ritual) {
-            PatchouliBuilder builder = new PatchouliBuilder(RITUALS, "item.ars_elemental." + ritual.getRegistryName().getPath())
+            PatchouliBuilder builder = new PatchouliBuilder(RITUALS, "item." + root + "." + ritual.getRegistryName().getPath())
                     .withIcon(ritual.getRegistryName().toString())
                     .withTextPage(ritual.getDescriptionKey())
-                    .withPage(new CraftingPage("ars_elemental:tablet_" + ritual.getRegistryName().getPath()));
+                    .withPage(new CraftingPage(root + ":tablet_" + ritual.getRegistryName().getPath()));
 
             this.pages.add(new PatchouliPage(builder, getPath(RITUALS, ritual.getRegistryName().getPath())));
         }
@@ -186,7 +186,7 @@ public class ArsProviders {
                     .withTextPage(root + ".enchantment_desc." + getRegistryName(enchantment).getPath());
 
             for (int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
-                builder.withPage(new EnchantingPage("ars_nouveau:" + getRegistryName(enchantment).getPath() + "_" + i));
+                builder.withPage(new EnchantingPage(root + ":" + getRegistryName(enchantment).getPath() + "_" + i));
             }
             this.pages.add(new PatchouliPage(builder, getPath(ENCHANTMENTS, getRegistryName(enchantment).getPath())));
         }
